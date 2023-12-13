@@ -12,7 +12,7 @@ def call(Map params) {
         stages {
             stage('Checkout') {
                 steps {
-                    git url: 'https://github.com/Jean-Paul-12/ReJe-crudspringboot'
+                    git url: scmUrl
                 }
             }
 
