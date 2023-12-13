@@ -1,12 +1,9 @@
-// File: pipelineGeneral.groovy
-
-// Arreglo
-def call(Map params) {
+//File: pipelineGeneral.groovvy
+def call (Map params) {
     def scmUrl = params.scmUrl
 
-    echo "Deploying backend with SCM URL: ${scmUrl}"
-
-    pipeline {
+    echo "Deploying backend wiht SCM URL: ${scmUrl}"
+pipeline {
         agent any
 
         stages {
@@ -49,11 +46,11 @@ def call(Map params) {
                 steps {
                     withSonarQubeEnv('ServerSonarqube') {
                         sh "${scannerHome}/bin/sonar-scanner \
-                           -Dsonar.projectKey=crudSpringBoot \
-                           -Dsonar.projectName=crudSpringBoot \
-                           -Dsonar.sources=src/main/java \
-                           -Dsonar.java.binaries=target/classes \
-                           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+                            -Dsonar.projectKey=analisisTermometro \
+                            -Dsonar.projectName=analisisTermometro \
+                            -Dsonar.sources=src/main/java \
+                            -Dsonar.java.binaries=target/classes \
+                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
                     }
                 }
             }
