@@ -14,7 +14,7 @@ def call(Map params) {
                 steps {
                    // git url: scmUrl
                     //script (
-                    def checkoutt = New lb_buildartefacto()
+                    def checkoutt = new lb_buildartefacto()
                     checkoutt.checkout(scmUrl)
                     //)
                 }
