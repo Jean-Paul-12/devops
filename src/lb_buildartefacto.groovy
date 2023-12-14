@@ -5,5 +5,10 @@ def checkout(scmUrl) {
 
 def build() {
     sh 'mvn clean package'
-    echo "Construcción verificada "
+    echo "Construcción Verificada"
+}
+
+def test() {
+    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report'
+    echo "Test Verificado"
 }

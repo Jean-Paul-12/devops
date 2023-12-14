@@ -27,17 +27,21 @@ def call(Map params) {
                         def buildd = new lb_buildartefacto()
                         buildd.build()
                     }
-                    //sh 'mvn clean package'
+                    
                 }
             }
 
-            /*stage('Test') {
+            stage('Test') {
                 steps {
-                    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
+                    script{
+                        def testt = new lb_buildartefacto()// Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
+                        testt.test()
+                    }
+                    //sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' 
                 }
             }
 
-            stage('Package') {
+            /*stage('Package') {
                 steps {
                     sh 'mvn package'
                 }
