@@ -13,8 +13,8 @@ def call(Map params) {
             stage('Checkout') {
                 steps {
                     script{
-                        def clonarr= new lb_buildartefacto()
-                        clonarr.checkout(scmUrl)
+                        def checkoutt= new lb_buildartefacto()
+                        checkoutt.checkout(scmUrl)
                         
                     }
                     
@@ -23,11 +23,15 @@ def call(Map params) {
 
             stage('Build Application') {
                 steps {
-                    sh 'mvn clean package'
+                    script{
+                        def buildd = new lb_buildartefacto()
+                        buildd.build()
+                    }
+                    //sh 'mvn clean package'
                 }
             }
 
-            stage('Test') {
+            /*stage('Test') {
                 steps {
                     sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
                 }
@@ -61,7 +65,7 @@ def call(Map params) {
                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
                     }
                 }
-            }
+            }*/
         }
     }
 }

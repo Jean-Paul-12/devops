@@ -1,4 +1,9 @@
 def checkout(scmUrl) {
     git url: scmUrl
-    echo "Verificado"
+    echo "Checkout Verificado"
+}
+
+def build() {
+    sh 'mvn clean package'
+    echo "Construcción verificada "
 }
