@@ -47,7 +47,7 @@ def call(Map params) {
                         def packagee = new lb_buildartefacto()
                         packagee.mypackage()
                     }
-                    //sh 'mvn package'
+                    
                 }
                 post {
                     always {
@@ -59,21 +59,20 @@ def call(Map params) {
                 }
             }
 
-            /*stage('SonarQube analysis') {
+            stage('SonarQube analysis') {
                 environment {
                     scannerHome = tool 'SonarqubeScanner'
                 }
                 steps {
                     withSonarQubeEnv('ServerSonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                           -Dsonar.projectKey=crudSpringBoot \
-                           -Dsonar.projectName=crudSpringBoot \
-                           -Dsonar.sources=src/main/java \
-                           -Dsonar.java.binaries=target/classes \
-                           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+                        script{
+                        def sonarQ = new lb_buildartefacto()
+                        sonarQ.sonarScan()
+                    }
+                        
                     }
                 }
-            }*/
+            }
         }
     }
 }
