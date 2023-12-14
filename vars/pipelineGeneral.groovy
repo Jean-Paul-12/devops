@@ -45,7 +45,7 @@ def call(Map params) {
                 steps {
                     script{
                         def packagee = new lb_buildartefacto()
-                        packagee.package()
+                        packagee.mypackage()
                     }
                     //sh 'mvn package'
                 }

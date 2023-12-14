@@ -13,7 +13,7 @@ def test() {
     echo "Test Verificado"
 }
 
-def package() {
+def mypackage() {
     sh 'mvn package'
     echo "Package Verificado"
 }
