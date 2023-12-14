@@ -67,7 +67,7 @@ def call(Map params) {
                     withSonarQubeEnv('ServerSonarqube') {
                         script{
                         def sonarQ = new lb_buildartefacto()
-                        sonarQ.sonarScan()
+                        sonarQ.sonarScan('ServerSonarqube')
                     }
                         
                     }

@@ -1,4 +1,4 @@
-def sonarScan() {
+def sonarScan('ServerSonarqube') {
     sh "${scannerHome}/bin/sonar-scanner \
                            -Dsonar.projectKey=crudSpringBoot \
                            -Dsonar.projectName=crudSpringBoot \
