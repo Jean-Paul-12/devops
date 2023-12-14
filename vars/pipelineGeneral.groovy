@@ -12,11 +12,12 @@ def call(Map params) {
         stages {
             stage('Checkout') {
                 steps {
-                   // git url: scmUrl
-                    //script (
-                    def checkoutt = new lb_buildartefacto()
-                    checkoutt.checkout(scmUrl)
-                    //)
+                    script{
+                        def clonarr= new lb_buildartefacto()
+                        clonarr.checkout(scmUrl)
+                        
+                    }
+                    
                 }
             }
 
