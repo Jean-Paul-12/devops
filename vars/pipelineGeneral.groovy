@@ -37,13 +37,17 @@ def call(Map params) {
                         def testt = new lb_buildartefacto()// Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
                         testt.test()
                     }
-                    //sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' 
+                    
                 }
             }
 
-            /*stage('Package') {
+            stage('Package') {
                 steps {
-                    sh 'mvn package'
+                    script{
+                        def packagee = new lb_buildartefacto()
+                        packagee.package()
+                    }
+                    //sh 'mvn package'
                 }
                 post {
                     always {
@@ -55,7 +59,7 @@ def call(Map params) {
                 }
             }
 
-            stage('SonarQube analysis') {
+            /*stage('SonarQube analysis') {
                 environment {
                     scannerHome = tool 'SonarqubeScanner'
                 }
