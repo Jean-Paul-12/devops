@@ -12,42 +12,37 @@ def call(Map params) {
         stages {
             stage('Checkout') {
                 steps {
-                    script{
-                        def checkoutt= new lb_buildartefacto()
+                    script {
+                        def checkoutt = new lb_buildartefacto()
                         checkoutt.checkout(scmUrl)
-                        
                     }
-                    
                 }
             }
 
             stage('Build Application') {
                 steps {
-                    script{
+                    script {
                         def buildd = new lb_buildartefacto()
                         buildd.build()
                     }
-                    
                 }
             }
 
             stage('Test') {
                 steps {
-                    script{
-                        def testt = new lb_buildartefacto()// Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
+                    script {
+                        def testt = new lb_buildartefacto() // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
                         testt.test()
                     }
-                    
                 }
             }
 
             stage('Package') {
                 steps {
-                    script{
+                    script {
                         def packagee = new lb_buildartefacto()
                         packagee.mypackage()
                     }
-                    
                 }
                 post {
                     always {
@@ -62,15 +57,14 @@ def call(Map params) {
             stage('SonarQube analysis') {
                 environment {
                     scannerHome = tool 'SonarqubeScanner'
+                }
                 steps {
                     withSonarQubeEnv('ServerSonarqube') {
-                        script{
-                        def sonarQ = new lb_analisissonarqube()
-                        sonarQ.mysonarScan()
+                        script {
+                            def sonarQ = new lb_analisissonarqube()
+                            sonarQ.mysonarScan()
                         }
-                        
                     }
-                }
                 }
             }
         }
