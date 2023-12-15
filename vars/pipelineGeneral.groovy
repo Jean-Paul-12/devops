@@ -55,9 +55,6 @@ def call(Map params) {
             }
 
             stage('SonarQube analysis') {
-                environment {
-                    scannerHome = tool 'SonarqubeScanner'
-                }
                 steps {
                     withSonarQubeEnv('ServerSonarqube') {
                         script {
