@@ -1,6 +1,5 @@
 def mysonarScan() {
     environment {
-        withSonarQubeEnv('ServerSonarqube') {
                     scannerHome = tool 'SonarqubeScanner'
                     sh "${scannerHome}/bin/sonar-scanner \
                            -Dsonar.projectKey=crudSpringBoot \
@@ -9,7 +8,6 @@ def mysonarScan() {
                            -Dsonar.java.binaries=target/classes \
                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
     echo "Escaneo SonarQube Verificado"
-                }
                 }
     
 }
