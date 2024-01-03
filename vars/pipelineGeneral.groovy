@@ -63,6 +63,17 @@ def call(Map params) {
                         }
                     }
                 }
+
+            stage('Build Image'){
+                steps{
+                    script{
+                        def imageExists = sh(script: "docker images -q REJE-crudspringboot-buildimagen", returnStdout: true).trim()
+                        if(imageExists){
+                            echo "La imagen REJE-crudspringboot-buildimagen ya existe. Descartando construcción..."
+                        } else {
+                            sh 'docker build -t REJE-crudspringboot-buildimagen -f ../tREJE-crudspringboot/Dockerfile ../REJE-crudspringboot'}
+                }
+            }
             }
         }
     }
